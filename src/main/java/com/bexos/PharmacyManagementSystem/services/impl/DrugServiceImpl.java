@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,5 +24,13 @@ public class DrugServiceImpl implements DrugService {
 
     public List<Drug> findAllDrugs() {
         return drugRepository.findAll();
+    }
+
+    public Drug findByDrugId(Integer drugId) {
+        return drugRepository.findById(drugId).orElse(null);
+    }
+
+    public void updateDrug(Drug drug) {
+
     }
 }

@@ -1,12 +1,13 @@
 package com.bexos.PharmacyManagementSystem.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -19,8 +20,11 @@ public class Drug {
     private Integer id;
     private String name;
     private String description;
-    private int price;
+    private double price;
     private int quantity;
     private String supplier;
+    @OneToMany(mappedBy = "drug", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Sale> sales;
 
 }

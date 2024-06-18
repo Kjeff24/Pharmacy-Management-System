@@ -11,4 +11,8 @@ public interface DrugService {
     void addDrug(DrugDto drug);
 
     List<Drug> findAllDrugs();
+
+    Drug findByDrugId(Integer drugId);
+
+    void updateDrug(Drug drug);
 }
