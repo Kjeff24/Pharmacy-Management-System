@@ -1,4 +1,14 @@
 package com.bexos.PharmacyManagementSystem.dtos;
 
-public record SaleDto() {
+import lombok.Builder;
+
+@Builder
+public record SaleDto(
+        Integer drugId,
+        String drugName,
+        Integer drugQuantity,
+        double drugPrice,
+        int purchaseQuantity,
+        String buyer
+) {
 }
