@@ -27,7 +27,8 @@ The system leverages data structures and algorithms for efficient drug managemen
 git clone https://github.com/Kjeff24/Pharmacy-Management-System.git
 ```
 - Open the project in your preferred IDE.
-- Configure database settings in application.properties.
+- Create a database `pharmacy_db` in postgres.
+- Change or set environment variable `${your_password}` to your database password.
 - Build and run the application
 
 ## PERFORMANCE OF THE ALGORITHMS
