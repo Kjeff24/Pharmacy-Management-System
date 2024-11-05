@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "${{ secret.taskDefinitionArn }}",
+    "taskDefinitionArn": "${{ secrets.taskDefinitionArn }}",
     "containerDefinitions": [
         {
             "name": "pharmacy",
-            "image": "${{ secret.image }}",
+            "image": "${{ secrets.image }}",
             "cpu": 0,
             "portMappings": [
                 {
@@ -22,11 +22,11 @@
                 },
                 {
                     "name": "DB_URL",
-                    "value": "${{ secret.DB_URL }}"
+                    "value": "${{ secrets.DB_URL }}"
                 },
                 {
                     "name": "DB_PASSWORD",
-                    "value": "${{ secret.DB_PASSWORD }}"
+                    "value": "${{ secrets.DB_PASSWORD }}"
                 }
             ],
             "environmentFiles": [],
@@ -49,7 +49,7 @@
         }
     ],
     "family": "spring-boot-server-td",
-    "executionRoleArn": "${{ secret.executionRoleArn }}",
+    "executionRoleArn": "${{ secrets.executionRoleArn }}",
     "networkMode": "awsvpc",
     "revision": 1,
     "volumes": [],
@@ -98,6 +98,6 @@
         "operatingSystemFamily": "LINUX"
     },
     "registeredAt": "2024-11-05T14:03:08.343Z",
-    "registeredBy": "${{ secret.registeredBy }}",
+    "registeredBy": "${{ secrets.registeredBy }}",
     "tags": []
 }
