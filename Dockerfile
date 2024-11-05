@@ -1,5 +1,5 @@
 # Build Application
-FROM public.ecr.aws/docker/library/maven:3.9.9-ibm-semeru-23-jammy As build
+FROM maven:3.9.6 As build
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ COPY . .
 RUN mvn package -DskipTests
 
 # Serve Application
-FROM public.ecr.aws/docker/library/openjdk:24-slim-bullseye
+FROM openjdk:21-bullseye
 
 WORKDIR /app
 
