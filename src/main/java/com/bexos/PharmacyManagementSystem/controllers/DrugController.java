@@ -17,7 +17,6 @@ import java.util.List;
  */
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/drug")
 public class DrugController {
     private final DrugService drugService;
     private final DrugRepository drugRepository;
@@ -29,7 +28,7 @@ public class DrugController {
      * @param model Model object to add drugs for rendering in view.
      * @return View name "index" displaying drugs based on query.
      */
-    @GetMapping
+    @GetMapping({"","/drug"})
     public String index(@RequestParam(name = "query", required = false) String query, Model model){
         List<Drug> drugs;
         if (query != null && !query.isEmpty()) {
@@ -47,7 +46,7 @@ public class DrugController {
      * @param model Model object to add DrugDto for form binding.
      * @return View name "add_drug" for adding a new drug.
      */
-    @GetMapping("/add")
+    @GetMapping("/drug/add")
     public String getDrug(Model model){
         DrugDto drug = DrugDto.builder().build();
         model.addAttribute("drug", drug);
@@ -61,7 +60,7 @@ public class DrugController {
      * @param redirectAttributes RedirectAttributes for flash messages.
      * @return Redirects to "/drug/add" after adding drug with success message.
      */
-    @PostMapping("/add")
+    @PostMapping("/drug/add")
     public String addDrug(@ModelAttribute("drug") DrugDto drug, RedirectAttributes redirectAttributes){
         drugService.addDrug(drug);
         redirectAttributes.addFlashAttribute("message", "Product added!");
@@ -75,7 +74,7 @@ public class DrugController {
      * @param model Model object to add Drug for form binding.
      * @return View name "update_drug" for updating an existing drug.
      */
-    @GetMapping("/update/{drug_id}")
+    @GetMapping("/drug/update/{drug_id}")
     public String getUpdate(@PathVariable("drug_id") Integer drugId, Model model) {
         Drug drug = drugService.findByDrugId(drugId);
         model.addAttribute("drug", drug);
@@ -90,7 +89,7 @@ public class DrugController {
      * @param redirectAttributes RedirectAttributes for flash messages.
      * @return Redirects to "/drug/update/{drug_id}" after updating drug with success message.
      */
-    @PostMapping("/update/{drug_id}")
+    @PostMapping("/drug/update/{drug_id}")
     public String updateProduct(@PathVariable("drug_id") Integer drugId, @ModelAttribute("drug") Drug drug, RedirectAttributes redirectAttributes) {
         if(!drugRepository.existsById(drugId)){
             redirectAttributes.addFlashAttribute("message", "Product updated!");
@@ -108,7 +107,7 @@ public class DrugController {
      * @param redirectAttributes RedirectAttributes for flash messages.
      * @return Redirects to "/" after deleting drug with success message.
      */
-    @GetMapping("/delete/{drug_id}")
+    @GetMapping("/drug/delete/{drug_id}")
     public String deleteDrug(@PathVariable("drug_id") Integer drugId, RedirectAttributes redirectAttributes) {
         if(!drugRepository.existsById(drugId)){
             redirectAttributes.addFlashAttribute("message", "Drug do not exist!");

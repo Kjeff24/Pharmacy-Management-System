@@ -21,14 +21,9 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .csrf(Customizer.withDefaults())
                 .authorizeHttpRequests(request -> request
-//                .requestMatchers().permitAll()
                 .anyRequest().permitAll());
 
         return http.build();
     }
-//
-//    @Bean
-//    public HiddenHttpMethodFilter hiddenHttpMethodFilter() {
-//        return new HiddenHttpMethodFilter();
-//    }
+
 }
