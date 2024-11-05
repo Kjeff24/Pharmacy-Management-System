@@ -12,7 +12,6 @@ FROM public.ecr.aws/docker/library/openjdk:24-slim-bullseye
 
 WORKDIR /app
 
-COPY --from=build /app/.env .
 COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
