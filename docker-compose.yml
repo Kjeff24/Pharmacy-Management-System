@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  pharmacy-management-system:
+    container_name: pharmacy
+    image: kjeff24/pharmacy-management-system:latest
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: ${DB_URL}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+
