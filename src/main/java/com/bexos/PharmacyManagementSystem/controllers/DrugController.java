@@ -28,7 +28,7 @@ public class DrugController {
      * @param model Model object to add drugs for rendering in view.
      * @return View name "index" displaying drugs based on query.
      */
-    @GetMapping({"","/drug"})
+    @GetMapping({"/","/drug"})
     public String index(@RequestParam(name = "query", required = false) String query, Model model){
         List<Drug> drugs;
         if (query != null && !query.isEmpty()) {
